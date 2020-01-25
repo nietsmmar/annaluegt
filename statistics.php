@@ -36,7 +36,7 @@ include 'connect.php';
 
     <?php
         if (!isset($_SESSION["username"])) {
-            include 'formsStatistics.html';
+            include 'forms.html';
         }
         else {
             include 'contentStatistics.html';
@@ -56,6 +56,8 @@ include 'connect.php';
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 
     <script type="text/javascript" src="script.js"></script>
 
