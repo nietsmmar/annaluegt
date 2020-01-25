@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "xelfingam";
+$password = "password";
 $dbname = "annalies";
 
 // Create connection

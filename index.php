@@ -7,10 +7,10 @@ include 'connect.php';
 <html>
 <head>
     <title>AnnaLügt</title>
-    <meta name="description" content="Schaue nach ob das Buch in der Bibliothek ist." />
-    <meta property="og:title" content="Bibliothek" />
-    <meta property="og:description" content="Schaue nach ob das Buch in der Bibliothek ist." />
-    <meta property="og:url" content="http://library.raphael-fritz.de" />
+    <meta name="description" content="Analyze yourself" />
+    <meta property="og:title" content="Anna lügt!" />
+    <meta property="og:description" content="Analyze yourself" />
+    <meta property="og:url" content="http://annalügt.raphael-fritz.de" />
     <meta property="og:image" content="http://library.raphael-fritz.de/book.jpg" />
 
     <!-- MDB icon -->
