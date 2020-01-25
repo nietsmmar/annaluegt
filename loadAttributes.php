@@ -4,9 +4,11 @@ include 'connect.php';
 
 $resultArray = [];
 
-$query = "select * from attributes where userid = (select id from user where name = '".$_SESSION['username']."'); ";
+$stmt = $conn->prepare('SELECT * FROM attributes WHERE userid = (select id from user where name = ?)');
+$stmt->bind_param('s', $_SESSION['username']);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$result = $conn->query($query);
 while($row = $result->fetch_assoc()) {
     $resultArray[] = array("id" => $row['id'], "name" => $row['name'], "description" => $row['description'], "format" => $row['format']);
 }

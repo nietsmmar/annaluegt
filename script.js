@@ -1,8 +1,30 @@
+var attributes = new Array();
+var attributeNames = new Array();
+
 $(function() {
 
     //init
     loadAttributes();
 
+    function loadStatistics() {
+        $( '#statisticsBox' ).empty();
+
+        attributes.forEach(function(attrId) {
+            $.post( "loadStatistics.php", { attrId: attrId })
+            .done(function( data ) {
+                console.log(data);
+                data = $.parseJSON(data);
+
+                $( '#statisticsBox' ).append("<div id=\"statisticsBox-" + attrId + "\" class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
+                <div class=\"boxTitle\">" + attributeNames[attrId] + "</div>"
+                + "</div>");
+
+                $.each( data, function( key, value ) {
+                    $('#statisticsBox-' + attrId).append(value.value + " - " + value.day + "<br>");
+                });
+            });
+        });
+    }
 
     // load category formats
     $.post( "loadCategoryFormats.php", { })
@@ -70,12 +92,16 @@ $(function() {
 
     // load all attributesBox
     function loadAttributes() {
+        attributes = [];
+        attributeNames = [];
         $( '#attributesBox' ).empty();
         $.post( "loadAttributes.php", { })
         .done(function( data ) {
             console.log(data);
             data = $.parseJSON(data);
             $.each( data, function( key, value ) {
+                attributes.push(value.id);
+                attributeNames[value.id] = value.name;
                 var inputElement = anyNumber;
                 if (value.format == 2) {
                     inputElement = zeroToTen;
@@ -92,11 +118,9 @@ $(function() {
                 + "</div>");
             });
             updateElements();
+            loadStatistics();
         });
     }
-
-
-
 
 
     $( '#signupButton' ).on('click', function () {

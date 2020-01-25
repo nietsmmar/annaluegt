@@ -4,22 +4,17 @@ include 'connect.php';
 $username = $_POST["name"];
 $pw = $_POST["password"];
 
-$escapedName = mysql_real_escape_string($username);
-$escapedPW = mysql_real_escape_string($pw);
-
-# generate a random salt to use for this account
-$salt = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
-
-$saltedPW =  $escapedPW . $salt;
-
+$salt = password_hash(random_bytes(32), PASSWORD_DEFAULT);
+$saltedPW =  $pw . $salt;
 $hashedPW = hash('sha256', $saltedPW);
 
-$query = "insert into user (name, pw, salt) values ('$escapedName', '$hashedPW', '$salt'); ";
+$stmt = $conn->prepare('insert into user (name, pw, salt) values (?, ?, ?)');
+$stmt->bind_param('sss', $username, $hashedPW, $salt);
 
-if ($conn->query($query) === TRUE) {
+if ($stmt->execute()) {
     echo "New account created successfully";
 } else {
-    echo "Error: " . $query . "<br>" . $conn->error;
+    echo "Error:" . $conn->error;
 }
 
 $conn->close();

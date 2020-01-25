@@ -4,15 +4,14 @@ include 'connect.php';
 
 $resultArray = [];
 
-$name = mysql_real_escape_string($_POST['name']);
-$description = mysql_real_escape_string($_POST['description']);
-$format = mysql_real_escape_string($_POST['format']);
+$name = $_POST['name'];
+$description = $_POST['description'];
+$format = $_POST['format'];
 
+$stmt = $conn->prepare('INSERT into attributes (userId, name, description, format) values ((select id from user where name = ?), ?, ?, ?)');
+$stmt->bind_param('ssss', $_SESSION['username'], $name, $description, $format);
 
-$query = "insert into attributes (userId, name, description, format) values ((select id from user where name = '".$_SESSION['username']."'), '$name', '$description', '$format'); ";
-echo $query;
-
-if ($conn->query($query) === TRUE) {
+if ($stmt->execute()) {
     echo "Successfully inserted";
 } else {
     echo "Error: " . $query . "<br>" . $conn->error;
