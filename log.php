@@ -4,9 +4,9 @@ include 'connect.php';
 
 $resultArray = [];
 
-$attrId = $_POST['attrId'];
-$value = $_POST['value'];
-$date = $_POST['date'];
+$attrId = mysql_real_escape_string($_POST['attrId']);
+$value = mysql_real_escape_string($_POST['value']);
+$date = mysql_real_escape_string($_POST['date']);
 
 
 $query = "insert into log (userId, attrId, value, day) values ((select id from user where name = '".$_SESSION['username']."'), '$attrId', '$value', '$date'); ";

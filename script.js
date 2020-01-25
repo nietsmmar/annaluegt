@@ -1,5 +1,28 @@
 $(function() {
 
+    //init
+    loadAttributes();
+
+
+    // load category formats
+    $.post( "loadCategoryFormats.php", { })
+    .done(function( data ) {
+        console.log(data);
+        data = $.parseJSON(data);
+        $.each( data, function( key, value ) {
+            $( "#newCategoryFormat" ).append("<option value=\"" + value.id + "\">" + value.description + "</option>");
+        });
+    });
+
+    $( '#saveNewCategory' ).on('click', function () {
+        $.post( "addNewCategory.php", { name: $('#newCategoryName').val(), description: $('#newCategoryDescription').val(), format: $('#newCategoryFormat').val()})
+        .done(function( data ) {
+            console.log(data);
+            loadAttributes();
+            $('#newCategory').modal('hide');
+        });
+    });
+
     function updateElements() {
         $('.attrSlider').slider();
         $('.boxDatepicker').datepicker({
@@ -46,28 +69,32 @@ $(function() {
     var zeroTo23 = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
 
     // load all attributesBox
-    $.post( "loadAttributes.php", { })
-    .done(function( data ) {
-        console.log(data);
-        data = $.parseJSON(data);
-        $.each( data, function( key, value ) {
-            var inputElement = anyNumber;
-            if (value.format == 2) {
-                inputElement = zeroToTen;
-            }
-            else if (value.format == 3) {
-                inputElement = zeroTo23;
-            }
-            $( '#attributesBox' ).append("<div class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
-            <div class=\"boxTitle\">" + value.name + "</div>"
-            + "<div class=\"boxDescription\">" + value.description + "</div>"
-            + "<div class=\"boxInput\">" + inputElement + "</div>"
-            + "<div id=\"boxDatepicker-" + value.id + "\" class='boxDatepicker'></div>"
-            + "<input class=\"logButton\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
-            + "</div>");
+    function loadAttributes() {
+        $( '#attributesBox' ).empty();
+        $.post( "loadAttributes.php", { })
+        .done(function( data ) {
+            console.log(data);
+            data = $.parseJSON(data);
+            $.each( data, function( key, value ) {
+                var inputElement = anyNumber;
+                if (value.format == 2) {
+                    inputElement = zeroToTen;
+                }
+                else if (value.format == 3) {
+                    inputElement = zeroTo23;
+                }
+                $( '#attributesBox' ).append("<div class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
+                <div class=\"boxTitle\">" + value.name + "</div>"
+                + "<div class=\"boxDescription\">" + value.description + "</div>"
+                + "<div class=\"boxInput\">" + inputElement + "</div>"
+                + "<div id=\"boxDatepicker-" + value.id + "\" class='boxDatepicker'></div>"
+                + "<input class=\"logButton\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
+                + "</div>");
+            });
+            updateElements();
         });
-        updateElements();
-    });
+    }
+
 
 
 
