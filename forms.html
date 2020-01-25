@@ -1,0 +1,62 @@
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark sticky-top contrastColor">
+
+  <a class="navbar-brand" href="index.html">AnnaLügt</a>
+
+  <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+    </ul>
+
+    <div id="feedback"></div>
+
+    <form class="form-inline my-2 my-lg-0 ml-auto" action="">
+        <input id="usernameLogin" class="form-control" type="text" placeholder="username" aria-label="Login">
+        <input id="passwordLogin" class="form-control" type="password" placeholder="password" aria-label="Login">
+        <input id="loginButton" class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit" value="Login">
+    </form>
+
+
+  </div>
+</nav>
+<!--/.Navbar -->
+
+<div class="jumbotron text-center">
+
+    <div id="signUpBox">
+        <!-- Default form register -->
+        <form class="text-center border border-light p-5" action="#!">
+
+            <p class="h4 mb-4">Sign up</p>
+
+            <!-- Username -->
+            <input id="usernameSignup" type="text" id="defaultRegisterFormUsername" class="form-control mb-4" placeholder="Username">
+
+            <!-- Password -->
+            <input id="passwordSignup" type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                <span style="text-decoration: line-through;">At least 8 characters and 1 digit</span> <br>I don't give a fuck. Choose your password freely.
+            </small>
+
+            <!-- Sign up button -->
+            <button id="signupButton" class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+
+            <hr>
+
+            <!-- Terms of service -->
+            <p>By clicking
+                <em>Sign up</em> you agree to our
+                <a href="" target="_blank">terms of service</a>
+
+        </form>
+        <!-- Default form register -->
+    </div>
+</div>

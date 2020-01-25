@@ -1,0 +1,61 @@
+.contrastColor {
+  background-color:rgba(0, 0, 0, 0.77) !important;
+}
+
+#feedback {
+    color: white;
+}
+
+#signupBox {
+    width: 600px;
+    display: table;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 700px) {
+    #signupBox {
+        width: 300px;
+    }
+}
+
+.attributeCard {
+    min-height: 300px;
+    width: 450px;
+    padding: 15px;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border: 1px solid green !important;
+}
+
+.tooltip.in {
+  opacity: 1;
+}
+
+.boxTitle {
+    font-size: 14pt;
+    font-weight: bold;
+    color: gray;
+}
+
+.boxDescription {
+    font-size: 10pt;
+    color: gray;
+}
+
+.boxInput {
+    margin: 25px;
+}
+
+.datepicker {
+    margin: 0 auto;
+}
+
+.logButton {
+    float: right;
+}
+
+#logAlert {
+    position: absolute;
+    right: 10px;
+    top: 70px;
+    display: none;
+}
