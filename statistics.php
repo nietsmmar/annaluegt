@@ -30,7 +30,7 @@ include 'connect.php';
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body user="<?php echo $_SESSION['username']; ?>" statistics="true">
 
     <?php
         if (!isset($_SESSION["username"])) {
@@ -56,6 +56,8 @@ include 'connect.php';
     <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
+
+    <script type="text/javascript" src="authentication.js"></script>
 
     <script type="text/javascript" src="script.js"></script>
 

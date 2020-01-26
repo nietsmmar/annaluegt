@@ -4,7 +4,7 @@ include 'connect.php';
 
 $resultArray = [];
 
-$stmt = $conn->prepare('SELECT * FROM attributes WHERE userid = (select id from user where name = ?)');
+$stmt = $conn->prepare('SELECT * FROM attributes WHERE userid = (select id from user where name = ?) ORDER BY name');
 $stmt->bind_param('s', $_SESSION['username']);
 $stmt->execute();
 $result = $stmt->get_result();
