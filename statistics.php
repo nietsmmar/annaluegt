@@ -28,7 +28,7 @@ include 'connect.php';
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="myCSS/style.css">
 </head>
 <body user="<?php echo $_SESSION['username']; ?>" statistics="true">
 
@@ -57,11 +57,11 @@ include 'connect.php';
 
     <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
 
-    <script type="text/javascript" src="authentication.js"></script>
+    <script type="text/javascript" src="myJS/authentication.js"></script>
 
-    <script type="text/javascript" src="statistics.js"></script>
+    <script type="text/javascript" src="myJS/statistics.js"></script>
 
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="myJS/main.js"></script>
 
 </body>
 </html>
