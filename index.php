@@ -60,8 +60,8 @@ include 'connect.php';
     <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript" src="authentication.js"></script>
-    
-    <script type="text/javascript" src="script.js"></script>
+
+    <script type="text/javascript" src="main.js"></script>
 
 </body>
 </html>
