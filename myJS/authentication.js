@@ -5,7 +5,7 @@ $(function() {
     if ($('body').attr("user")) {
         loggedIn = true;
     }
-    
+
     $( ".loginInput" ).keypress(function(e) {
         if(e.which == 13) {
             $( '#loginButton' ).click();
@@ -13,12 +13,14 @@ $(function() {
     });
 
     $( '#signupButton' ).on('click', function () {
-        $.post( "signup.php", { name: $("#usernameSignup").val(), password: $("#passwordSignup").val() })
-        .done(function( data ) {
-            $( '#feedback' ).empty().append(data);
-            $( '#usernameSignup').val('');
-            $( '#passwordSignup').val('');
-        });
+        if ($("#usernameSignup").val()) {
+            $.post( "signup.php", { name: $("#usernameSignup").val(), password: $("#passwordSignup").val() })
+            .done(function( data ) {
+                $( '#feedback' ).empty().append(data);
+                $( '#usernameSignup').val('');
+                $( '#passwordSignup').val('');
+            });
+        }
     });
 
     $( '#loginButton' ).on('click', function () {
@@ -45,4 +47,3 @@ $(function() {
     });
 
 });
-
