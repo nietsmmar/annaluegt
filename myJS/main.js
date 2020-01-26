@@ -1,5 +1,4 @@
 var attributes = new Array();
-var attributeNames = new Array();
 
 var dataPoints = new Object();
 var options =  new Object();
@@ -74,6 +73,7 @@ $(function() {
                     }, 5000);
                 }
 
+                attrBox.css("border","solid 1px green");
                 attrBox.animate({opacity: 1}, 1000);
 
             });
@@ -82,15 +82,13 @@ $(function() {
 
     function loadAttributes() {
         attributes = [];
-        attributeNames = [];
         $( '#attributesBox' ).empty();
         $.post( "loadAttributes.php", { })
         .done(function( data ) {
             console.log(data);
             data = $.parseJSON(data);
             $.each( data, function( key, value ) {
-                attributes.push(value.id);
-                attributeNames[value.id] = value.name;
+                attributes.push({id: value.id, name: value.name, today: value.today});
                 var inputElement = anyNumber;
                 if (value.format == 2) {
                     inputElement = zeroToTen;
@@ -98,13 +96,17 @@ $(function() {
                 else if (value.format == 3) {
                     inputElement = zeroTo23;
                 }
-                $( '#attributesBox' ).append("<div class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
+                $( '#attributesBox' ).append("<div id=\"attributeBox-" + value.id + "\" class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
                 <div class=\"boxTitle\">" + value.name + "</div>"
                 + "<div class=\"boxDescription\">" + value.description + "</div>"
                 + "<div class=\"boxInput\">" + inputElement + "</div>"
                 + "<div id=\"boxDatepicker-" + value.id + "\" class='boxDatepicker'></div>"
                 + "<input class=\"logButton\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
                 + "</div>");
+
+                if (!value.today) {
+                    $( "#attributeBox-" + value.id ).css("border","solid 1px red");
+                }
             });
             updateElements();
             if ($('body').attr("statistics")) {
