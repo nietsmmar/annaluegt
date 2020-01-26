@@ -149,6 +149,11 @@ $(function() {
         });
     }
 
+    $( ".loginInput" ).keypress(function(e) {
+        if(e.which == 13) {
+            $( '#loginButton' ).click();
+        }
+    });
 
     $( '#signupButton' ).on('click', function () {
         $.post( "signup.php", { name: $("#usernameSignup").val(), password: $("#passwordSignup").val() })
