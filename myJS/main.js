@@ -42,7 +42,6 @@ $(function() {
         $('.boxDatepicker').datepicker({
                     inline: true,
                     todayHighlight: true,
-                    todayBtn: "linked",
                     dateFormat: 'yy-mm-dd'
                 });
 
