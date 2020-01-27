@@ -18,7 +18,7 @@ function loadStatistics() {
         		includeZero: false
         	},
         	data: [{
-        		type: "spline",
+        		type: "line",
         		yValueFormatString: "#,###.##",
         		dataPoints: dataPoints[attrId]
         	}]
@@ -36,7 +36,8 @@ function loadStatistics() {
             $.each( data, function( key, value ) {
                 dataPoints[attrId].push({
         			x: new Date(value.day),
-        			y: value.value
+        			y: value.value,
+                    indexLabel: value.activity
         		});
             });
 
