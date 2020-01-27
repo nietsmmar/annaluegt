@@ -3,10 +3,12 @@ var attributes = new Array();
 var dataPoints = new Object();
 var options =  new Object();
 
+var activities = new Array();
+
 $(function() {
     //init
     if (loggedIn) {
-        loadAttributes();
+        loadActivities();
         loadCategoryFormats();
     }
 
@@ -18,8 +20,20 @@ $(function() {
         $.post( "addNewCategory.php", { name: $('#newCategoryName').val(), description: $('#newCategoryDescription').val(), format: $('#newCategoryFormat').val()})
         .done(function( data ) {
             console.log(data);
+            $('#newCategoryName').val('');
+            $('#newCategoryDescription').val('');
             loadAttributes();
             $('#newCategory').modal('hide');
+        });
+    });
+
+    $( '#saveNewActivity' ).on('click', function () {
+        $.post( "addNewActivity.php", { name: $('#newActivityName').val()})
+        .done(function( data ) {
+            console.log(data);
+            $('#newActivityName').val('');
+            loadActivities();
+            $('#newActivity').modal('hide');
         });
     });
 
@@ -55,11 +69,12 @@ $(function() {
                 date = new Date();
                 date = date.getFullYear() + "-" + date.getMonth()+1 + "-" + date.getDate();
             }
+            var activity = $("#attributeActivity-" + id).val();
 
             var attrBox = $(this).parent();
             attrBox.css('opacity', '0.3');
 
-            $.post( "log.php", { attrId: id, value: value, date: date })
+            $.post( "log.php", { attrId: id, value: value, date: date, activity: activity })
             .done(function( data ) {
                 console.log(data);
 
@@ -81,6 +96,12 @@ $(function() {
     }
 
     function loadAttributes() {
+        var options = "";
+        activities.forEach(function(activity) {
+            options = options + "<option value=\"" + activity.id + "\">" + activity.name + "</option>";
+        });
+        console.log(options);
+
         attributes = [];
         $( '#attributesBox' ).empty();
         $.post( "loadAttributes.php", { })
@@ -101,6 +122,10 @@ $(function() {
                 + "<div class=\"boxDescription\">" + value.description + "</div>"
                 + "<div class=\"boxInput\">" + inputElement + "</div>"
                 + "<div id=\"boxDatepicker-" + value.id + "\" class='boxDatepicker'></div>"
+                + "<select class=\"form-control\" id=\"attributeActivity-" + value.id + "\">"
+                + "<option value=\"-1\" selected>Not linked to any activity</option>"
+                + options
+                + "</select>"
                 + "<input class=\"logButton\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
                 + "</div>");
 
@@ -112,6 +137,18 @@ $(function() {
             if ($('body').attr("statistics")) {
                 loadStatistics();
             }
+        });
+    }
+
+    function loadActivities() {
+        $.post( "loadActivities.php", { })
+        .done(function( data ) {
+            console.log(data);
+            data = $.parseJSON(data);
+            $.each( data, function( key, value ) {
+                activities.push(value);
+            });
+            loadAttributes();
         });
     }
 

@@ -51,6 +51,7 @@
 
 .logButton {
     float: right;
+    margin-top: 15px;
 }
 
 #logAlert {
