@@ -49,6 +49,10 @@
     margin: 0 auto;
 }
 
+.boxDatepicker {
+    display: none;
+}
+
 .logButton {
     float: right;
     margin-top: 15px;
@@ -63,4 +67,8 @@
 
 #usernameLogin {
     margin-right: 5px;
+}
+
+.nottodayButton {
+    margin-bottom: 15px;
 }

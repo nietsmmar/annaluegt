@@ -47,6 +47,15 @@ $(function() {
                 });
 
         initializeLogButtons();
+        initializeNotTodayButtons();
+    }
+
+    function initializeNotTodayButtons() {
+        $( '.nottodayButton' ).on('click', function () {
+            var attrId = $(this).attr("attrId");
+            $(this).hide();
+            $("#boxDatepicker-" + attrId).show();
+        });
     }
 
     function loadCategoryFormats() {
@@ -122,6 +131,7 @@ $(function() {
                 + "<div class=\"boxDescription\">" + value.description + "</div>"
                 + "<div class=\"boxInput\">" + inputElement + "</div>"
                 + "<div id=\"boxDatepicker-" + value.id + "\" class='boxDatepicker'></div>"
+                + "<input class=\"nottodayButton\" attrId=\"" + value.id + "\" type=\"button\" value=\"Not today?\">"
                 + "<select class=\"form-control\" id=\"attributeActivity-" + value.id + "\">"
                 + "<option value=\"-1\" selected>Not linked to any activity</option>"
                 + options
