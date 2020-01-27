@@ -141,6 +141,7 @@ $(function() {
     }
 
     function loadActivities() {
+        activities = [];
         $.post( "loadActivities.php", { })
         .done(function( data ) {
             console.log(data);
