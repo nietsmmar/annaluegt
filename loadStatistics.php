@@ -11,8 +11,8 @@ $stmt->bind_param('ss', $_SESSION['username'], $attrId);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$activity = "";
 while($row = $result->fetch_assoc()) {
+    $activity = "";
     if ($row['name'] != "no activity")
         $activity = $row['name'];
     $resultArray[] = array("value" => $row['value'], "day" => $row['day'], "activity" => $activity);
