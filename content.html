@@ -37,18 +37,18 @@
 <!--/.Navbar -->
 
 
-<div class="jumbotron text-center">
-    <input type="button" id="addAttrButton" value="Add Category" data-toggle="modal" data-target="#newCategory">
-    <input type="button" id="addActButton" value="Add Activity" data-toggle="modal" data-target="#newActivity">
+<div class="jumbotron text-center backColor">
+    <input class="btn btn-dark" type="button" id="addAttrButton" value="Add Category" data-toggle="modal" data-target="#newCategory">
+    <input class="btn btn-dark" type="button" id="addActButton" value="Add Activity" data-toggle="modal" data-target="#newActivity">
     <div class="row justify-content-md-center" id="attributesBox"></div>
 </div>
 
 
 <div id="newCategory" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content backColor">
       <div class="modal-header">
-        <h5 class="modal-title">New Category</h5>
+        <h5 class="modal-title text-white">New Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -56,20 +56,20 @@
       <div class="modal-body">
           <form>
             <div class="form-group">
-              <input type="text" class="form-control" id="newCategoryName" placeholder="name">
+              <input type="text" class="form-control text-light bg-dark" id="newCategoryName" placeholder="name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="newCategoryDescription" placeholder="description">
+              <input type="text" class="form-control text-light bg-dark" id="newCategoryDescription" placeholder="description">
             </div>
             <div class="form-group">
-                <select class="form-control" id="newCategoryFormat">
+                <select class="form-control text-light bg-dark" id="newCategoryFormat">
                 </select>
             </div>
           </form>
       </div>
       <div class="modal-footer">
-        <button id="saveNewCategory" type="button" class="btn btn-primary">Save category</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="saveNewCategory" type="button" class="btn btn-dark">Save category</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -77,9 +77,9 @@
 
 <div id="newActivity" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content backColor">
       <div class="modal-header">
-        <h5 class="modal-title">New Activity</h5>
+        <h5 class="modal-title text-white">New Activity</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -87,13 +87,13 @@
       <div class="modal-body">
           <form>
             <div class="form-group">
-              <input type="text" class="form-control" id="newActivityName" placeholder="name">
+              <input type="text" class="form-control text-light bg-dark" id="newActivityName" placeholder="name">
             </div>
           </form>
       </div>
       <div class="modal-footer">
-        <button id="saveNewActivity" type="button" class="btn btn-primary">Save activity</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="saveNewActivity" type="button" class="btn btn-dark">Save activity</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -30,7 +30,7 @@ include 'connect.php';
 
     <link rel="stylesheet" href="myCSS/style.css">
 </head>
-<body user="<?php echo $_SESSION['username']; ?>" statistics="true">
+<body user="<?php echo $_SESSION['username']; ?>" statistics="true" class="backColor">
 
     <?php
         if (!isset($_SESSION["username"])) {

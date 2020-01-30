@@ -13,8 +13,8 @@ $(function() {
     }
 
     var zeroToTen = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
-    var anyNumber = "<input class=\"attrInput\" type=\"number\" value=\"0\" min=\"0\"/>";
-    var zeroTo23 = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
+    var anyNumber = "<input class=\"attrInput text-light bg-dark grayBorder\" type=\"number\" value=\"0\" min=\"0\"/>";
+    var zeroTo23 = "<input class=\"attrSlider attrInput text-light bg-dark grayBorder\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
 
     $( '#saveNewCategory' ).on('click', function () {
         $.post( "addNewCategory.php", { name: $('#newCategoryName').val(), description: $('#newCategoryDescription').val(), format: $('#newCategoryFormat').val()})
@@ -130,16 +130,16 @@ $(function() {
                 + "<div class=\"boxDescription\">" + value.description + "</div>"
                 + "<div class=\"boxInput\">" + inputElement + "</div>"
                 + "<div id=\"boxDatepicker-" + value.id + "\" class='boxDatepicker'></div>"
-                + "<input class=\"nottodayButton\" attrId=\"" + value.id + "\" type=\"button\" value=\"Not today?\">"
-                + "<select class=\"form-control\" id=\"attributeActivity-" + value.id + "\">"
+                + "<input class=\"nottodayButton btn btn-dark\" attrId=\"" + value.id + "\" type=\"button\" value=\"Not today?\">"
+                + "<select class=\"form-control text-light bg-dark grayBorder\" id=\"attributeActivity-" + value.id + "\">"
                 + "<option value=\"-1\" selected>Not linked to any activity</option>"
                 + options
                 + "</select>"
-                + "<input class=\"logButton\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
+                + "<input class=\"logButton btn btn-dark\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
                 + "</div>");
 
                 if (!value.today) {
-                    $( "#attributeBox-" + value.id ).css("border","solid 1px red");
+                    $( "#attributeBox-" + value.id ).css("border","solid 3px darkred");
                 }
             });
             updateElements();

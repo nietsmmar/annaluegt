@@ -10,7 +10,7 @@ function loadStatistics() {
         dataPoints[attrId] = [];
         options[attrId] =  {
         	animationEnabled: true,
-        	theme: "light2",
+        	theme: "dark1",
         	axisX: {
         		valueFormatString: "DD MMM YYYY",
         	},
@@ -42,7 +42,7 @@ function loadStatistics() {
             });
 
             if (!attribute.today) {
-                $( "#statisticsBox-" + attrId ).css("border","solid 1px red");
+                $( "#statisticsBox-" + attrId ).css("border","solid 3px darkred");
             }
 
             $("#statisticsChart-" + attrId).CanvasJSChart(options[attrId]);

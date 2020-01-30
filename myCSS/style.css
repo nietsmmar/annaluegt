@@ -2,6 +2,10 @@
   background-color:rgba(0, 0, 0, 0.77) !important;
 }
 
+.backColor {
+    background-color: #1C1C1C;
+}
+
 #feedback {
     color: white;
 }
@@ -22,8 +26,16 @@
     min-height: 300px;
     width: 450px;
     padding: 15px;
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    border: 1px solid green;
+    -webkit-box-shadow: 8px 10px 12px 1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 8px 10px 12px 1px rgba(0,0,0,0.35);
+    box-shadow: 8px 10px 12px 1px rgba(0,0,0,0.35);
+    border: 3px solid darkgreen;
+    border-radius: 8px;
+    background: #2A2A2A;
+}
+
+.attributeCard:hover {
+    border-style: dashed !important;
 }
 
 .tooltip.in {
@@ -33,12 +45,12 @@
 .boxTitle {
     font-size: 14pt;
     font-weight: bold;
-    color: gray;
+    color: #e0e0e0;
 }
 
 .boxDescription {
     font-size: 10pt;
-    color: gray;
+    color: lightgray;
 }
 
 .boxInput {
@@ -72,4 +84,45 @@
 
 .nottodayButton {
     margin-bottom: 15px;
+}
+
+.grayBorder {
+    border: 1px solid gray;
+}
+
+.slider-track {
+    background: lightgray;
+}
+
+.slider-selection {
+    background: gray;
+}
+
+.slider-handle {
+    background: darkgreen;
+}
+
+.datepicker-inline {
+    background: #e0e0e0;
+}
+
+.table-condensed {
+    margin: auto !important;
+}
+
+.close {
+    color: white;
+    text-shadow: none;
+}
+
+.close:hover {
+    color: #5A5A5A;
+}
+
+.dropdown-menu {
+    background-color: #5A5A5A;
+}
+
+.dropdown-item:hover {
+    background-color: #5A5A5A;
 }
