@@ -96,7 +96,7 @@ $(function() {
                     }, 5000);
                 }
 
-                attrBox.css("border","solid 1px green");
+                attrBox.css("border","solid 3px darkgreen");
                 attrBox.animate({opacity: 1}, 1000);
 
             });
