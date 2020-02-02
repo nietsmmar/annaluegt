@@ -12,9 +12,9 @@ $(function() {
         $( "#navbar-toggler" ).click();
     }
 
-    var zeroToTen = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
     var anyNumber = "<input class=\"attrInput text-light bg-dark grayBorder\" type=\"number\" value=\"0\" min=\"0\"/>";
-    var zeroTo23 = "<input class=\"attrSlider attrInput text-light bg-dark grayBorder\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
+    var zeroToTen = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"1\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
+    var zeroTo23 = "<input class=\"attrSlider attrInput text-light bg-dark grayBorder\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"9\"/>";
 
     $( '#saveNewCategory' ).on('click', function () {
         $.post( "addNewCategory.php", { name: $('#newCategoryName').val(), description: $('#newCategoryDescription').val(), format: $('#newCategoryFormat').val()})
