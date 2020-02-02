@@ -12,9 +12,17 @@ $(function() {
         $( "#navbar-toggler" ).click();
     }
 
-    var anyNumber = "<input class=\"attrInput text-light bg-dark grayBorder\" type=\"number\" value=\"0\" min=\"0\"/>";
-    var zeroToTen = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"1\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
-    var zeroTo23 = "<input class=\"attrSlider attrInput text-light bg-dark grayBorder\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"9\"/>";
+    var inputElements = new Array();
+    inputElements.push("<input class=\"attrInput text-light bg-dark grayBorder\" type=\"number\" value=\"0\" min=\"0\"/>");
+    inputElements.push("<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"1\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"10\"/>");
+    inputElements.push("<input class=\"attrSlider attrInput text-light bg-dark grayBorder\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"9\"/>");
+    inputElements.push("<div class=\"onoffswitch\">\
+        <input type=\"checkbox\" name=\"onoffswitch\" class=\"onoffswitch-checkbox attrInput\" id=\"myonoffswitch\" value=\"0\">\
+        <label class=\"onoffswitch-label\" for=\"myonoffswitch\">\
+            <span class=\"onoffswitch-inner\"></span>\
+            <span class=\"onoffswitch-switch\"></span>\
+        </label>\
+    </div>");
 
     $( '#saveNewCategory' ).on('click', function () {
         $.post( "addNewCategory.php", { name: $('#newCategoryName').val(), description: $('#newCategoryDescription').val(), format: $('#newCategoryFormat').val()})
@@ -47,6 +55,16 @@ $(function() {
 
         initializeLogButtons();
         initializeNotTodayButtons();
+
+        $( '.onoffswitch-label' ).on('click', function () {
+            var checkBox = $(this).parent().children().first();
+            if (checkBox.val() == '1') {
+                checkBox.val('0');
+            }
+            else {
+                checkBox.val('1');
+            }
+        });
     }
 
     function initializeNotTodayButtons() {
@@ -118,13 +136,8 @@ $(function() {
             data = $.parseJSON(data);
             $.each( data, function( key, value ) {
                 attributes.push({id: value.id, name: value.name, today: value.today});
-                var inputElement = anyNumber;
-                if (value.format == 2) {
-                    inputElement = zeroToTen;
-                }
-                else if (value.format == 3) {
-                    inputElement = zeroTo23;
-                }
+                var inputElement = inputElements[value.format-1];
+
                 $( '#attributesBox' ).append("<div id=\"attributeBox-" + value.id + "\" class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
                 <div class=\"boxTitle\">" + value.name + "</div>"
                 + "<div class=\"boxDescription\">" + value.description + "</div>"
@@ -137,6 +150,11 @@ $(function() {
                 + "</select>"
                 + "<input class=\"logButton btn btn-dark\" type=\"button\" value=\"Log\"  attrId=\"" + value.id + "\">"
                 + "</div>");
+
+                if (value.format == 4) { // give unique id's to toggleswitch
+                    $("#attributeBox-" + value.id).find( ".boxInput" ).find(".onoffswitch-checkbox").attr("id","onoffswitch-" + value.id);
+                    $("#attributeBox-" + value.id).find( ".boxInput" ).find(".onoffswitch-label").attr("for","onoffswitch-" + value.id);
+                }
 
                 if (!value.today) {
                     $( "#attributeBox-" + value.id ).css("border","solid 3px darkred");
