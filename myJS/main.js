@@ -1,9 +1,7 @@
 var attributes = new Array();
-
+var activities = new Array();
 var dataPoints = new Object();
 var options =  new Object();
-
-var activities = new Array();
 
 $(function() {
     //init
@@ -75,7 +73,7 @@ $(function() {
             var date = $( "#boxDatepicker-" + id).data('datepicker').getFormattedDate('yyyy-mm-dd');
             if (date == null || date == undefined || date == '') {
                 date = new Date();
-                date = date.getFullYear() + "-" + date.getMonth()+1 + "-" + date.getDate();
+                date = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + date.getDate();
             }
             var activity = $("#attributeActivity-" + id).val();
 
