@@ -8,6 +8,8 @@ $(function() {
     if (loggedIn) {
         loadActivities();
         loadCategoryFormats();
+    } else {
+        $( "#navbar-toggler" ).click();
     }
 
     var zeroToTen = "<input class=\"attrSlider attrInput\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"10\"/>";
