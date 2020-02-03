@@ -30,6 +30,8 @@ include 'connect.php';
     <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
 
     <link rel="stylesheet" href="myCSS/style.css">
+
+    <link rel="stylesheet" href="font/fontawesome-5.12.0/css/all.css">
 </head>
 <body user="<?php echo $_SESSION['username']; ?>" class="backColor">
 

@@ -34,6 +34,16 @@
     background: #2A2A2A;
 }
 
+.editAttributeBar {
+    position: absolute;
+    right: 15;
+    color: white;
+}
+
+.editButton, .deleteButton {
+    cursor: pointer;
+}
+
 .attributeCard:hover {
     border-style: dashed !important;
 }

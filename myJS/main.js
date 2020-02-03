@@ -45,6 +45,25 @@ $(function() {
         });
     });
 
+    $( '#saveEditCategory' ).on('click', function () {
+        alert("test");
+        $.post( "editCategory.php", { attrId: $('#editCategory').attr('attrId'), name: $('#editCategoryName').val(), description: $('#editCategoryDescription').val(), format: $('#editCategoryFormat').val()})
+        .done(function( data ) {
+            console.log(data);
+            loadAttributes();
+            $('#editCategory').modal('hide');
+        });
+    });
+
+    $( '#executeRemoveCategory' ).on('click', function () {
+        $.post( "removeCategory.php", { attrId: $('#removeCategory').attr('attrId')})
+        .done(function( data ) {
+            console.log(data);
+            loadAttributes();
+            $('#removeCategory').modal('hide');
+        });
+    });
+
     function updateElements() {
         $('.attrSlider').slider();
         $('.boxDatepicker').datepicker({
@@ -65,6 +84,20 @@ $(function() {
                 checkBox.val('1');
             }
         });
+
+        $( '.editButton' ).on('click', function() {
+            var attrId = $(this).parent().parent().attr('attrId');
+            $("#editCategory").attr('attrId', attrId);
+            $("#editCategoryName").val(attributes[attrId].name);
+            $("#editCategoryDescription").val(attributes[attrId].description);
+            $("#editCategoryFormat").val(attributes[attrId].format);
+        });
+
+        $( '.deleteButton' ).on('click', function() {
+            var attrId = $(this).parent().parent().attr('attrId');
+            $("#removeCategory").attr('attrId', attrId);
+            $("#removeCategoryTitle").html("Remove Category: " + attributes[attrId].name);
+        });
     }
 
     function initializeNotTodayButtons() {
@@ -82,6 +115,7 @@ $(function() {
             data = $.parseJSON(data);
             $.each( data, function( key, value ) {
                 $( "#newCategoryFormat" ).append("<option value=\"" + value.id + "\">" + value.description + "</option>");
+                $( "#editCategoryFormat" ).append("<option value=\"" + value.id + "\">" + value.description + "</option>");
             });
         });
     }
@@ -135,10 +169,11 @@ $(function() {
             console.log(data);
             data = $.parseJSON(data);
             $.each( data, function( key, value ) {
-                attributes.push({id: value.id, name: value.name, today: value.today});
+                attributes[value.id] = {id: value.id, description: value.description, format: value.format, name: value.name, today: value.today};
                 var inputElement = inputElements[value.format-1];
 
-                $( '#attributesBox' ).append("<div id=\"attributeBox-" + value.id + "\" class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\">\
+                $( '#attributesBox' ).append("<div id=\"attributeBox-" + value.id + "\" class=\"col- col-md-auto myhoverable mx-4 my-3 attributeCard\" attrId=\"" + value.id + "\">\
+                <div class=\"editAttributeBar\"><i class=\"fas fa-edit editButton\" data-toggle=\"modal\" data-target=\"#editCategory\"></i>&nbsp;&nbsp;<i class=\"fas fa-trash-alt deleteButton\" data-toggle=\"modal\" data-target=\"#removeCategory\"></i></div>\
                 <div class=\"boxTitle\">" + value.name + "</div>"
                 + "<div class=\"boxDescription\">" + value.description + "</div>"
                 + "<div class=\"boxInput\">" + inputElement + "</div>"

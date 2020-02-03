@@ -91,3 +91,51 @@
     </div>
   </div>
 </div>
+
+<div id="editCategory" class="modal" tabindex="-1" role="dialog" attrId="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content backColor">
+      <div class="modal-header">
+        <h5 class="modal-title text-white">Edit Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control text-light bg-dark" id="editCategoryName" placeholder="name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control text-light bg-dark" id="editCategoryDescription" placeholder="description">
+            </div>
+            <div class="form-group">
+                <select class="form-control text-light bg-dark" id="editCategoryFormat">
+                </select>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button id="saveEditCategory" type="button" class="btn btn-dark">Save category</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="removeCategory" class="modal" tabindex="-1" role="dialog" attrId="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content backColor">
+      <div class="modal-header">
+        <h5 id="removeCategoryTitle" class="modal-title text-white">Remove Category: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button id="executeRemoveCategory" type="button" class="btn btn-dark">Remove category</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
