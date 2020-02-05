@@ -18,7 +18,7 @@ $(function() {
     inputElements.push("<input class=\"attrSlider attrInput text-light bg-dark grayBorder\" type=\"text\" data-slider-min=\"0\" data-slider-max=\"23\" data-slider-step=\"1\" data-slider-value=\"9\"/>");
     inputElements.push("<div class=\"onoffswitch\">\
         <input type=\"checkbox\" name=\"onoffswitch\" class=\"onoffswitch-checkbox attrInput\" id=\"toggleSwitch\" value=\"0\">\
-        <label class=\"onoffswitch-label\" for=\"myonoffswitch\">\
+        <label class=\"onoffswitch-label\" for=\"toggleSwitch\">\
             <span class=\"onoffswitch-inner\"></span>\
             <span class=\"onoffswitch-switch\"></span>\
         </label>\
