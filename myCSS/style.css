@@ -44,6 +44,10 @@
     cursor: pointer;
 }
 
+#editLogInput {
+    text-align: center;
+}
+
 .attributeCard:hover {
     border-style: dashed !important;
 }

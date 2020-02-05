@@ -33,3 +33,33 @@
 <div class="jumbotron text-center backColor">
     <div class="row justify-content-md-center" id="statisticsBox"></div>
 </div>
+
+
+<div id="editLog" class="modal" tabindex="-1" role="dialog" logId="-1" format="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content backColor">
+      <div class="modal-header">
+        <h5 class="modal-title text-white">Edit entry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group" id="editLogInput">
+            </div>
+            <div id="editLogDatepicker" class='boxDatepicker'></div>
+            <div class="form-group">
+                <select class="form-control text-light bg-dark" id="saveEditLogActivity">
+                    <option value="-1" selected>Not linked to any activity</option>
+                </select>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button id="saveEditLog" type="button" class="btn btn-dark">Save entry</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
