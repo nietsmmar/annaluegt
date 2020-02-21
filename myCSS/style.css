@@ -6,6 +6,75 @@
     background-color: #1C1C1C;
 }
 
+#intro {
+    color: white;
+}
+
+#introText {
+    font-size: 1.5rem;
+}
+
+#intro > .boxContainer {
+    justify-content: center !important;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+#intro > .boxContainer > .box {
+    border: 1px solid white;
+    display: flex;
+    margin: 60px 20px 60px 20px;
+    font-weight: 400;
+    box-shadow: 0 2px 5px 0 rgba(255,255,255,0.16),0 2px 10px 0 rgba(255,255,255,0.12);
+    flex-direction: column;
+    min-width: 0;
+    max-width: 300px;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(255,255,255,.125);
+    border-radius: .25rem;
+}
+
+#intro > .boxContainer > .box > .boxTop {
+    padding: 10px;
+    height: 260px;
+}
+
+#intro > .boxContainer > .box > .boxBody {
+    background-color: rgba(255,255,255,0.1);
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+#intro > .boxContainer > .boxBody > ul {
+    margin-left: 10px;
+    list-style: none;
+    padding-left: 0px;
+    text-align: left;
+}
+
+#intro > .boxContainer > .box > .boxTop > .boxIcon {
+    width: 80px;
+    margin: 20px 0 20px 0;
+}
+
+.downArrow {
+    margin-bottom: 60px;
+    width: 100px;
+}
+
+h2 {
+    line-height: 1.2 !important;
+    font-size: 1.75rem !important;
+    font-weight: 300 !important;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
 #feedback {
     color: white;
 }
